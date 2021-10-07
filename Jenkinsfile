@@ -1,6 +1,6 @@
 pipeline {
     agent any 
-    BranchName=BRANCH_NAME
+    BranchName=env.BRANCH_NAME
     stages {
         stage("build") { 
             steps {
@@ -11,7 +11,7 @@ pipeline {
         stage("test") { 
             steps {
                echo 'Testing Application'
-                echo "Branch name is${BranchName}"
+                echo "Branch name is ${BranchName}"
             }
         }
         stage("deploy") { 
