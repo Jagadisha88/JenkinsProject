@@ -1,23 +1,29 @@
 pipeline {
     agent any 
-    BranchName=env.BRANCH_NAME
+    parameters{
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    }
     stages {
         stage("build") { 
             steps {
                echo 'Building application'
-               echo "Branch name is ${BranchName}"
             }
         }
         stage("test") { 
+            when{
+                expression{
+                    parameters.executeTests
+                }
+            }
             steps {
                echo 'Testing Application'
-                echo "Branch name is ${BranchName}"
             }
         }
         stage("deploy") { 
             steps {
                 echo 'Deploying Application'
-                echo "Branch name is ${BranchName}"
+                echo "Deploying version ${params.VERSION}"
             }
         }
     }
