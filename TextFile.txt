@@ -1,1 +1,2 @@
 Its a just text file
+Its a .txt file
