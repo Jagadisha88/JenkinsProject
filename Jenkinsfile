@@ -4,7 +4,7 @@ pipeline {
         stage("build") { 
             steps {
                echo 'Building yarn'
-		nodejs('NodeJS17.0.1') {
+		nodejs('NodeJS') {
 			   sh 'yarn install'
 			   }
             }
