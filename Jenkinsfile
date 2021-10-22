@@ -4,9 +4,8 @@ pipeline {
         stage("build") { 
             steps {
                echo 'Building yarn'
-			   nodejs('NodeJS17.0.1'){
-			   batch 'yarn install'
-			   batch 'yarn build'
+		nodejs('NodeJS17.0.1') {
+			   sh 'yarn install'
 			   }
             }
         }
@@ -14,7 +13,7 @@ pipeline {
             steps {
                echo 'Testing Application'
 			   withGradle(){
-			   batch './gradlew -v'
+			   sh './gradlew -v'
 			   }
             }
         }
