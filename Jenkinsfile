@@ -9,6 +9,7 @@ pipeline {
         stage("test") { 
             steps {
                echo 'Testing Application'
+                java Hello
             }
         }
         stage("deploy") { 
